@@ -54,7 +54,7 @@ exports.config = {
     ignoreUncaughtExceptions: true,
     // SELENIUM_PROMISE_MANAGER: true,
     capabilities: {
-        browserName: 'firefox',
+        browserName: 'chrome',
         args: [
             '--incognito'
         ]
