@@ -6,4 +6,7 @@ Steps to run:
 3) Run *npm run update*
 4) Run *npm run e2e*
 
- 
+After execution we should see the below report:
+
+
+![Report](https://mhn-king.s3.amazonaws.com/2020-05-01_18-11-42.png)
