@@ -1,0 +1,35 @@
+{
+  "name": "kanitestchallenge",
+  "version": "1.0.0",
+  "description": "Test Challenge",
+  "main": "index.js",
+  "scripts": {
+    "compile": "tsc",
+    "clean": "rimraf ./scripts && rimraf ./reports/json/*.json && rimraf ./reports/html/*.html",
+    "update": "webdriver-manager update",
+    "e2e": "npm run clean && npm run compile &&  protractor scripts/runner.js"
+  },
+  "devDependencies": {
+    "typescript": "^3.6.3",
+    "ts-node": "^8.4.1",
+    "webdriver-manager": "^12.1.7",
+    "protractor": "^5.4.2",
+    "protractor-cucumber-framework": "^6.1.3",
+    "selenium-protractor": "^2.0.0",
+    "selenium-cucumber-js": "^1.7.0",
+    "cucumber": "^5.1.0",
+    "cucumber-html-reporter": "^5.0.2",
+    "tslint": "^5.20.0",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "timeout-as-promise": "^1.0.0",
+    "@types/chai": "^4.2.3",
+    "@types/chai-as-promised": "^7.1.2",
+    "@types/cucumber": "^4.0.7",
+    "@types/node": "^10.12.18",
+    "@types/selenium-webdriver": "3.0.14",
+    "@types/shortid": "0.0.29"
+  },
+  "author": "",
+  "license": "ISC"
+}

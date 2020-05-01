@@ -1,0 +1,48 @@
+import { browser, Config } from 'protractor';
+import * as path from 'path';
+import * as reporter from 'cucumber-html-reporter';
+import chai = require('chai');
+import chaiAsPromised = require('chai-as-promised');
+chai.use(chaiAsPromised);
+export let config: Config = {
+  directConnect: true,
+  ignoreUncaughtExceptions: true,
+  // SELENIUM_PROMISE_MANAGER: true,
+  capabilities: {
+    browserName: 'firefox',
+    args: [
+      '--incognito'
+    ]
+  },
+  baseUrl: 'https://www.autotrader.com/',
+  onPrepare: (): any => {
+    browser.waitForAngularEnabled(false);
+  },
+  beforeLaunch: (): any => { },
+  afterLaunch: async (): Promise<any> => {
+    let options = {
+      theme: 'bootstrap',
+      jsonFile: `${path.join(__dirname, '/..')}/reports/json/auto-trader_report.json`,
+      output: `${path.join(__dirname, '/..')}/reports/html/auto-trader_report.html`,
+      reportSuiteAsScenarios: true,
+      scenarioTimestamp: true,
+      launchReport: true,
+      storeScreenShots: true,
+      columnLayout: 1
+    };
+    reporter.generate(options);
+  },
+  framework: 'custom',
+  frameworkPath: require.resolve('protractor-cucumber-framework'),
+  specs: [
+    '../features/*.feature',
+  ],
+  cucumberOpts: {
+    'require-module': path.join(__dirname, '/..') + '/node_modules/ts-node/register',
+    format: `json:reports/json/auto-trader_report.json`,
+    require: [
+     path.join(__dirname, '/..') + '/steps/*.ts',
+    ],
+    tags: '@auto-trader'
+  }
+}
