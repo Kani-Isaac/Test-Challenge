@@ -1,11 +1,11 @@
 import { browser, protractor, element, by, $ } from 'protractor';
-import { Then } from 'cucumber';
+import { Then, Given } from 'cucumber';
 const EC = protractor.ExpectedConditions;
 import chai = require("chai");
 const expect = chai.expect;
 const delay = require('timeout-as-promise');
 
-Then(/^I am able to land on the "([^"]*)" page$/, {timeout: 90 * 1000}, async function (argValue): Promise<any> {
+Given(/^I am able to land on the "([^"]*)" page$/, {timeout: 90 * 1000}, async function (argValue): Promise<any> {
    await browser.get(browser.baseUrl);
    expect(await browser.getCurrentUrl(), 'Verify the autotrader url').contains(argValue);
 });
